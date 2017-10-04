@@ -1,107 +1,32 @@
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# Created by newuser for 5.0.5
+
+alias ifconfig='sudo ifconfig'
+alias zypper='sudo zypper'
+alias jekyll='bundle exec jekyll.ruby2.1'
+alias rake='bundle exec rake'
+alias activate='source activate'
+alias deactivate='source deactivate'
+alias arp-scan='sudo arp-scan'
+
 export PATH="$PYENV_ROOT/versions/anaconda3-4.1.1/bin/:$PATH"
 export PATH="$HOME/activator-dist-1.3.12/bin/:$PATH"
+export PATH="$HOME/rvm/bin/:$PATH"
+export PATH="$HOME/mybin/apache-maven-3.5.0/bin/:$PATH"
+export PATH="/opt/pgi/linux86-64/17.4/bin/:$PATH"
+
 
 source ~/.zplug/init.zsh
-
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search", hook-build:"__zsh_version 4.3"
+zplug "zsh-users/zsh-syntax-highlighting", nice:11
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Make sure to use double quotes
-zplug "zsh-users/zsh-history-substring-search"
-
-# Use the package as a command
-# And accept glob patterns (e.g., brace, wildcard, ...)
-zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
-
-# Can manage everything e.g., other person's zshrc
-zplug "tcnksm/docker-alias", use:zshrc
-
-# Disable updates using the "frozen" tag
-zplug "k4rthik/git-cal", as:command, frozen:1
-
-# Grab binaries from GitHub Releases
-# and rename with the "rename-to:" tag
-zplug "junegunn/fzf-bin", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf, \
-    use:"*darwin*amd64*"
-
-# Supports oh-my-zsh plugins and the like
-zplug "plugins/git",   from:oh-my-zsh
-
-# Also prezto
-zplug "modules/prompt", from:prezto
-
-# Load if "if" tag returns true
-zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
-
-# Run a command after a plugin is installed/updated
-# Provided, it requires to set the variable like the following:
-# ZPLUG_SUDO_PASSWORD="********"
-zplug "jhawthorn/fzy", \
-    as:command, \
-    rename-to:fzy, \
-    hook-build:"make && sudo make install"
-
-# Supports checking out a specific branch/tag/commit
-zplug "b4b4r07/enhancd", at:v1
-zplug "mollifier/anyframe", at:4c23cb60
-
-# Can manage gist file just like other packages
-zplug "b4b4r07/79ee61f7c140c63d2786", \
-    from:gist, \
-    as:command, \
-    use:get_last_pane_path.sh
-
-# Support bitbucket
-zplug "b4b4r07/hello_bitbucket", \
-    from:bitbucket, \
-    as:command, \
-    use:"*.sh"
-
-# Rename a command with the string captured with `use` tag
-zplug "b4b4r07/httpstat", \
-    as:command, \
-    use:'(*).sh', \
-    rename-to:'$1'
-
-# Group dependencies
-# Load "emoji-cli" if "jq" is installed in this example
-zplug "stedolan/jq", \
-    from:gh-r, \
-    as:command, \
-    rename-to:jq
-zplug "b4b4r07/emoji-cli", \
-    on:"stedolan/jq"
-# Note: To specify the order in which packages should be loaded, use the defer
-#       tag described in the next section
-
-# Set the priority when loading
-# e.g., zsh-syntax-highlighting must be loaded
-# after executing compinit command and sourcing other plugins
-# (If the defer tag is given 2 or above, run after compinit command)
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# Can manage local plugins
-zplug "~/.zshrc", from:local
-
-# Load theme file
-zplug 'dracula/zsh', as:theme
-
-# Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+  printf 'Install? [y/N]: '
+  if read -q; then
+    echo; zplug install
+  fi
 fi
-
-# Then, source plugins and add commands to $PATH
 zplug load --verbose
 
 
@@ -323,10 +248,12 @@ esac
  
 alias GREP_OPTIONS='--binary-files=without-match'
 
-alias docker='sudo docker'
-alias 'apt in'='apt install'
-alias 'apt se'='apt search'
-alias condact='source activate'
-alias condeact='source deactivate'
-
-
+export JAVA_HOME="/usr/lib64/jvm/java-1.8.0-openjdk-1.8.0"
+export PATH="JAVA_HOME/bin:$PATH"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyvenv init -)"
+export PATH="$PYENV_ROOT/versions/anaconda3-4.1.1/bin/:$PATH"
+export PATH="${HOME}/.scalaenv/bin:${PATH}"
+eval "$(scalaenv init -)"
