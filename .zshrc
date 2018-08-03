@@ -1,5 +1,9 @@
 # Created by newuser for 5.0.5
 
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+
 alias ifconfig='sudo ifconfig'
 alias zypper='sudo zypper'
 alias jekyll='bundle exec jekyll.ruby2.1'
@@ -8,8 +12,8 @@ alias activate='source activate'
 alias deactivate='source deactivate'
 alias arp-scan='sudo arp-scan'
 
-export PATH="$PYENV_ROOT/versions/anaconda3-4.1.1/bin/:$PATH"
-export PATH="$HOME/activator-dist-1.3.12/bin/:$PATH"
+#export PATH="$PYENV_ROOT/versions/anaconda3-4.1.1/bin/:$PATH"
+#export PATH="$HOME/activator-dist-1.3.12/bin/:$PATH"
 export PATH="$HOME/rvm/bin/:$PATH"
 export PATH="$HOME/mybin/apache-maven-3.5.0/bin/:$PATH"
 export PATH="/opt/pgi/linux86-64/17.4/bin/:$PATH"
@@ -18,7 +22,7 @@ export PATH="/opt/pgi/linux86-64/17.4/bin/:$PATH"
 source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", nice:11
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 if ! zplug check --verbose; then
@@ -248,12 +252,16 @@ esac
  
 alias GREP_OPTIONS='--binary-files=without-match'
 
-export JAVA_HOME="/usr/lib64/jvm/java-1.8.0-openjdk-1.8.0"
+export JAVA_HOME="/usr"
 export PATH="JAVA_HOME/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyvenv init -)"
-export PATH="$PYENV_ROOT/versions/anaconda3-4.1.1/bin/:$PATH"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyvenv init -)"
+#export PATH="$PYENV_ROOT/versions/anaconda3-4.1.1/bin/:$PATH"
 export PATH="${HOME}/.scalaenv/bin:${PATH}"
 eval "$(scalaenv init -)"
+export PATH="${HOME}/.sbtenv/bin:${PATH}"
+eval "$(sbtenv init -)"
+export PATH=/home/utsumi/anaconda3/bin:$PATH
+
